@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arleen Barreiros | Remote Operations & Project Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF8F3;
+    --warm-dark: #1C1917;
+    --warm-mid: #44403C;
+    --warm-muted: #78716C;
+    --accent: #7B5E3A;
+    --accent-light: #C9A97A;
+    --accent-pale: #F5EFE4;
+    --border: rgba(120, 113, 108, 0.2);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--warm-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250,248,243,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--warm-dark);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent-light);
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--warm-dark);
+    margin-bottom: 0.25rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    color: var(--warm-muted);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--warm-mid);
+    max-width: 440px;
+    margin-bottom: 3rem;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent);
+    color: #FAF8F3;
+    text-decoration: none;
+    padding: 0.875rem 2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .hero-cta:hover { background: var(--warm-dark); transform: translateY(-1px); }
+  .hero-cta svg { transition: transform 0.2s; }
+  .hero-cta:hover svg { transform: translateX(4px); }
+
+  .hero-right {
+    background: var(--accent-pale);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '"';
+    font-family: var(--serif);
+    font-size: 20rem;
+    color: rgba(123,94,58,0.07);
+    position: absolute;
+    top: -3rem;
+    right: 2rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 3rem;
+  }
+  .stat {
+    background: rgba(250,248,243,0.6);
+    padding: 1.5rem;
+  }
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warm-muted);
+  }
+  .hero-quote {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--warm-mid);
+    line-height: 1.6;
+    border-left: 2px solid var(--accent-light);
+    padding-left: 1.25rem;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 7rem 6rem;
+  }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent-light);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--warm-dark);
+    margin-bottom: 1rem;
+  }
+  .section-intro {
+    font-size: 1rem;
+    color: var(--warm-muted);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 4rem;
+  }
+
+  /* SERVICES */
+  #services { background: white; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+  .service-card {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.25s;
+    position: relative;
+  }
+  .service-card:nth-child(3n) { border-right: none; }
+  .service-card:nth-last-child(-n+3) { border-bottom: none; }
+  .service-card:hover { background: var(--accent-pale); }
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 1.25rem;
+    color: var(--accent-light);
+  }
+  .service-card h3 {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--warm-dark);
+    margin-bottom: 0.75rem;
+  }
+  .service-card p {
+    font-size: 0.88rem;
+    color: var(--warm-muted);
+    line-height: 1.75;
+  }
+
+  /* ABOUT */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 6rem;
+    align-items: center;
+    background: var(--cream);
+  }
+  .about-visual {
+    position: relative;
+  }
+  .about-frame {
+    background: var(--accent-pale);
+    aspect-ratio: 3/4;
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    width: 60%;
+    height: 60%;
+    border: 2px solid var(--accent-light);
+    z-index: -1;
+  }
+  .about-monogram {
+    font-family: var(--serif);
+    font-size: 9rem;
+    font-weight: 600;
+    color: rgba(123,94,58,0.15);
+    line-height: 1;
+    user-select: none;
+  }
+  .about-badge {
+    position: absolute;
+    bottom: -1rem;
+    left: -1rem;
+    background: var(--accent);
+    color: #FAF8F3;
+    padding: 1rem 1.25rem;
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-style: italic;
+  }
+  .expertise-list {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .expertise-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--warm-mid);
+  }
+  .expertise-item:first-child { border-top: 1px solid var(--border); }
+  .expertise-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    flex-shrink: 0;
+  }
+
+  /* INDUSTRIES */
+  #industries {
+    background: var(--warm-dark);
+    color: var(--cream);
+    padding: 7rem 6rem;
+  }
+  #industries .section-label { color: var(--accent-light); }
+  #industries .section-label::before { background: var(--accent-light); }
+  #industries .section-title { color: var(--cream); }
+  #industries .section-intro { color: rgba(250,248,243,0.6); }
+  .industries-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 3rem;
+  }
+  .industry-tag {
+    padding: 0.6rem 1.25rem;
+    border: 1px solid rgba(201,169,122,0.3);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    color: rgba(250,248,243,0.75);
+    transition: all 0.2s;
+  }
+  .industry-tag:hover {
+    border-color: var(--accent-light);
+    color: var(--accent-light);
+    background: rgba(201,169,122,0.08);
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--accent-pale);
+    text-align: center;
+    padding: 7rem 6rem;
+  }
+  #contact .section-label { justify-content: center; }
+  #contact .section-label::before { display: none; }
+  #contact .section-title { max-width: 600px; margin: 0 auto 1.5rem; }
+  #contact .section-intro { margin: 0 auto 3rem; text-align: center; }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-link.primary {
+    background: var(--accent);
+    color: #FAF8F3;
+  }
+  .contact-link.primary:hover { background: var(--warm-dark); }
+  .contact-link.secondary {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+  .contact-link.secondary:hover { background: var(--accent); color: #FAF8F3; }
+  .contact-detail {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: var(--warm-muted);
+  }
+  .contact-detail a { color: var(--accent); text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--warm-dark);
+    color: rgba(250,248,243,0.5);
+    padding: 2rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: rgba(250,248,243,0.8);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.7s ease both; }
+  .hero-title { animation: fadeUp 0.7s 0.1s ease both; }
+  .hero-subtitle { animation: fadeUp 0.7s 0.2s ease both; }
+  .hero-desc { animation: fadeUp 0.7s 0.3s ease both; }
+  .hero-cta { animation: fadeUp 0.7s 0.4s ease both; }
+  .stat-grid { animation: fadeUp 0.7s 0.15s ease both; }
+  .hero-quote { animation: fadeUp 0.7s 0.3s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 4rem 2.5rem; }
+    .hero-right { padding: 3rem 2.5rem; }
+    .hero-right::before { font-size: 12rem; }
+    section { padding: 5rem 2.5rem; }
+    #about { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .service-card:nth-child(3n) { border-right: 1px solid var(--border); }
+    .service-card:nth-child(2n) { border-right: none; }
+    footer { padding: 1.5rem 2.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    #industries { padding: 5rem 2.5rem; }
+    #contact { padding: 5rem 2.5rem; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+  }
+  @media (max-width: 640px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { border-right: none !important; }
+    .service-card:last-child { border-bottom: none; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Arleen Barreiros</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#industries">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Remote Operations Professional</p>
+    <h1 class="hero-title">Arleen<br><em>Barreiros</em></h1>
+    <p class="hero-subtitle">Project Manager · Virtual Assistant · Operations Coordinator</p>
+    <p class="hero-desc">
+      With over 20 years of experience spanning C-level executive support, grassroots organizations, 
+      and fast-moving remote teams, I bring structure, strategy, and calm clarity to complex operations — 
+      wherever your team needs it most.
+    </p>
+    <a href="#contact" class="hero-cta">
+      Let's work together
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">C-Suite</div>
+        <div class="stat-label">Executive Support</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">Multi</div>
+        <div class="stat-label">Industry Background</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Remote Ready</div>
+      </div>
+    </div>
+    <p class="hero-quote">
+      "Bringing order to complexity, efficiency to workflows,<br>
+      and partnership to every team I support."
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">What I Offer</p>
+  <h2 class="section-title">Services Built for<br><em style="font-family:var(--serif);font-style:italic;">Modern Business</em></h2>
+  <p class="section-intro">
+    Flexible, professional support tailored to growing businesses, nonprofits, and executive teams 
+    who need a reliable partner in their corner.
+  </p>
+  <div class="services-grid">
+    <div class="service-card">
+      <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+      </svg>
+      <h3>Project Management</h3>
+      <p>End-to-end oversight of projects from inception to delivery — timelines, stakeholder communication, risk tracking, and milestone management across distributed teams.</p>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+      </svg>
+      <h3>Event Coordination</h3>
+      <p>Planning, logistics, vendor coordination, and on-the-ground execution for corporate events, community activations, partner programs, and multi-location rollouts.</p>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+      </svg>
+      <h3>Executive &amp; VA Support</h3>
+      <p>High-trust support for C-suite leaders and founders — calendar management, communications, research, reporting, travel coordination, and confidential administrative work.</p>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+      </svg>
+      <h3>Operations Management</h3>
+      <p>Process design, workflow optimization, SOP creation, tool implementation, and systems thinking to help your business run smoother at every level.</p>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      <h3>Communications &amp; Marketing Support</h3>
+      <p>Email campaign management, newsletter production, copywriting, CRM administration, landing page updates, and partner outreach on your behalf.</p>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+      </svg>
+      <h3>Systems &amp; Tools</h3>
+      <p>Hands-on with Airtable, HubSpot, Zapier, Mailchimp, Ontraport, Google Workspace, Ruzuku, Slack, and more — I get up to speed fast and build what your team actually needs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual">
+    <div class="about-frame">
+      <span class="about-monogram">AB</span>
+      <div class="about-badge">20+ years in the field</div>
+    </div>
+  </div>
+  <div>
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">A Partner You Can<br><em style="font-family:var(--serif);font-style:italic;">Count On</em></h2>
+    <p style="font-size:0.95rem;line-height:1.85;color:var(--warm-mid);margin-bottom:1.5rem;">
+      I'm a seasoned remote operations professional based in South Florida with a career spanning executive 
+      support, event logistics, nonprofit coordination, online course administration, and multi-state 
+      business development — always working remotely, always delivering.
+    </p>
+    <p style="font-size:0.95rem;line-height:1.85;color:var(--warm-mid);margin-bottom:0.5rem;">
+      My approach is consultative and process-driven. I ask the right questions, build the right systems, 
+      and stay two steps ahead so you don't have to. Whether it's a solo founder or an enterprise team, 
+      I adapt quickly and hit the ground running.
+    </p>
+    <div class="expertise-list">
+      <div class="expertise-item"><span class="expertise-dot"></span>Executive-level discretion &amp; professionalism</div>
+      <div class="expertise-item"><span class="expertise-dot"></span>Cross-functional team &amp; stakeholder management</div>
+      <div class="expertise-item"><span class="expertise-dot"></span>Multi-state event &amp; partnership programs</div>
+      <div class="expertise-item"><span class="expertise-dot"></span>Budget tracking &amp; financial reporting support</div>
+      <div class="expertise-item"><span class="expertise-dot"></span>Online course &amp; webinar platform administration</div>
+      <div class="expertise-item"><span class="expertise-dot"></span>CRM setup, automation &amp; data management</div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <p class="section-label">Background &amp; Industries</p>
+  <h2 class="section-title" style="color:var(--cream);">Experience Across<br><em style="font-family:var(--serif);font-style:italic;color:var(--accent-light);">Many Worlds</em></h2>
+  <p class="section-intro">
+    From grassroots nonprofits to corporate studios, e-learning platforms to fitness brands — 
+    I've supported organizations at every stage and scale.
+  </p>
+  <div class="industries-wrap">
+    <span class="industry-tag">Fitness &amp; Wellness</span>
+    <span class="industry-tag">E-Learning &amp; EdTech</span>
+    <span class="industry-tag">Nonprofit &amp; Advocacy</span>
+    <span class="industry-tag">Event &amp; Hospitality</span>
+    <span class="industry-tag">Financial Services</span>
+    <span class="industry-tag">Marketing &amp; Advertising</span>
+    <span class="industry-tag">Health &amp; Wellness Brands</span>
+    <span class="industry-tag">Small Business Operations</span>
+    <span class="industry-tag">Franchise Management</span>
+    <span class="industry-tag">Online Coaching &amp; Courses</span>
+    <span class="industry-tag">Community Organizations</span>
+    <span class="industry-tag">Corporate Communications</span>
+    <span class="industry-tag">Tech Startups</span>
+    <span class="industry-tag">Professional Services</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-title">Ready to Work<br><em style="font-family:var(--serif);font-style:italic;">Together?</em></h2>
+  <p class="section-intro">
+    Whether you need a few hours of support per week or a dedicated operations partner, 
+    I'd love to hear about your project.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:arleen@example.com" class="contact-link primary">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      Send an Email
+    </a>
+    <a href="https://linkedin.com/in/arleenbarreiros" class="contact-link secondary" target="_blank">
+      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+      LinkedIn Profile
+    </a>
+  </div>
+  <p class="contact-detail">
+    Based in South Florida &nbsp;·&nbsp; Available for remote engagements worldwide<br>
+    <a href="mailto:arleen@example.com">arleen@example.com</a>
+  </p>
+</section>
+
+<footer>
+  <span class="footer-name">Arleen Barreiros</span>
+  <span>Remote Operations &amp; Project Management · 20+ Years Experience</span>
+  <span>&copy; 2026</span>
+</footer>
+
+</body>
+</html>
