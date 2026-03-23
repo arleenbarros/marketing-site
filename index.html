@@ -631,6 +631,7 @@
     I've supported organizations at every stage and scale.
   </p>
   <div class="industries-wrap">
+    <span class="industry-tag">Fitness &amp; Wellness</span>
     <span class="industry-tag">E-Learning &amp; EdTech</span>
     <span class="industry-tag">Nonprofit &amp; Advocacy</span>
     <span class="industry-tag">Event &amp; Hospitality</span>
@@ -638,6 +639,7 @@
     <span class="industry-tag">Marketing &amp; Advertising</span>
     <span class="industry-tag">Health &amp; Wellness Brands</span>
     <span class="industry-tag">Small Business Operations</span>
+    <span class="industry-tag">Franchise Management</span>
     <span class="industry-tag">Online Coaching &amp; Courses</span>
     <span class="industry-tag">Community Organizations</span>
     <span class="industry-tag">Corporate Communications</span>
@@ -645,7 +647,6 @@
     <span class="industry-tag">Professional Services</span>
   </div>
 </section>
-
 
 <!-- CONTACT -->
 <section id="contact">
@@ -655,43 +656,31 @@
     Whether you need a few hours of support per week or a dedicated operations partner, 
     I'd love to hear about your project.
   </p>
-  <div class="contact-links">
-    <a href="https://courses.ruzuku.com/meet/arleenbarreiros/discovery" class="contact-link primary" target="_blank">
-      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-      </svg>
-      Book a Discovery Call
-    </a>
-    <button class="contact-link secondary" style="cursor:pointer;font-family:var(--sans);" onclick="document.getElementById('contactOverlay').classList.add('open')">
+
+  <!-- Collapsed state: just the button -->
+  <div id="contactCta">
+    <button class="contact-link primary" style="cursor:pointer;font-family:var(--sans);border:none;" onclick="showForm()">
       <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
       </svg>
       Get in Touch
     </button>
   </div>
-  <p class="contact-detail">
-    Based in South Florida &nbsp;·&nbsp; Available for remote engagements worldwide
-  </p>
-</section>
- 
-<!-- CONTACT FORM OVERLAY -->
-<div class="form-overlay" id="contactOverlay" onclick="if(event.target===this)closeForm()">
-  <div class="form-box">
-    <button class="form-close" onclick="closeForm()" aria-label="Close">&times;</button>
-    <div id="formContent">
-      <p class="form-title">Let's Talk</p>
-      <p class="form-sub">Fill out the form below and I'll get back to you within 1–2 business days.</p>
-      <div class="form-group">
-        <label for="f-name">Your Name</label>
-        <input type="text" id="f-name" placeholder="Jane Smith" required>
+
+  <!-- Expanded inline form -->
+  <div id="contactForm" style="display:none; max-width:480px; margin:0 auto; text-align:left;">
+    <div id="formFields">
+      <div style="margin-bottom:1.1rem;">
+        <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.4rem;">Your Name</label>
+        <input type="text" id="f-name" placeholder="Jane Smith" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);background:white;font-family:var(--sans);font-size:0.9rem;color:var(--warm-dark);outline:none;box-sizing:border-box;">
       </div>
-      <div class="form-group">
-        <label for="f-email">Email Address</label>
-        <input type="email" id="f-email" placeholder="jane@company.com" required>
+      <div style="margin-bottom:1.1rem;">
+        <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.4rem;">Email Address</label>
+        <input type="email" id="f-email" placeholder="jane@company.com" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);background:white;font-family:var(--sans);font-size:0.9rem;color:var(--warm-dark);outline:none;box-sizing:border-box;">
       </div>
-      <div class="form-group">
-        <label for="f-service">Service You're Interested In</label>
-        <select id="f-service">
+      <div style="margin-bottom:1.1rem;">
+        <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.4rem;">Service You're Interested In</label>
+        <select id="f-service" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);background:white;font-family:var(--sans);font-size:0.9rem;color:var(--warm-dark);outline:none;box-sizing:border-box;-webkit-appearance:none;appearance:none;">
           <option value="">Select a service...</option>
           <option>Project Management</option>
           <option>Event Coordination</option>
@@ -702,42 +691,50 @@
           <option>Not sure yet — let's talk</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="f-msg">Tell Me About Your Project</label>
-        <textarea id="f-msg" placeholder="Give me a brief overview of what you need help with..."></textarea>
+      <div style="margin-bottom:1.1rem;">
+        <label style="display:block;font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.4rem;">Tell Me About Your Project</label>
+        <textarea id="f-msg" placeholder="Give me a brief overview of what you need help with..." style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);background:white;font-family:var(--sans);font-size:0.9rem;color:var(--warm-dark);outline:none;box-sizing:border-box;min-height:110px;resize:vertical;"></textarea>
       </div>
-      <button class="form-submit" onclick="submitForm()">Send Message</button>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <button id="submitBtn" onclick="submitForm()" style="padding:0.875rem 2rem;background:var(--accent);color:#FAF8F3;border:none;font-family:var(--sans);font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;">Send Message</button>
+        <button onclick="hideForm()" style="padding:0.875rem 1.5rem;background:none;border:1px solid var(--border);font-family:var(--sans);font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;color:var(--warm-muted);">Cancel</button>
+      </div>
     </div>
-    <div class="form-success" id="formSuccess">
-      <div class="form-success-icon">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M5 13l4 4L19 7"/>
-        </svg>
+    <div id="formSuccess" style="display:none;text-align:center;padding:3rem 0;">
+      <div style="width:48px;height:48px;border-radius:50%;background:var(--accent-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent);">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
       </div>
-      <h3>Message Sent!</h3>
-      <p>Thank you for reaching out. I'll be in touch within 1–2 business days.</p>
+      <p style="font-family:var(--serif);font-size:1.75rem;font-weight:500;color:var(--warm-dark);margin-bottom:0.5rem;">Message Sent!</p>
+      <p style="font-size:0.88rem;color:var(--warm-muted);line-height:1.7;">Thank you for reaching out. I'll be in touch within 1–2 business days.</p>
     </div>
   </div>
-</div>
- 
+
+  <p class="contact-detail" style="margin-top:2.5rem;">
+    Based in South Florida &nbsp;·&nbsp; Available for remote engagements worldwide
+  </p>
+</section>
+
 <script>
-function closeForm() {
-  document.getElementById('contactOverlay').classList.remove('open');
+function showForm() {
+  document.getElementById('contactCta').style.display = 'none';
+  document.getElementById('contactForm').style.display = 'block';
+  document.getElementById('f-name').focus();
 }
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeForm();
-});
+function hideForm() {
+  document.getElementById('contactCta').style.display = 'block';
+  document.getElementById('contactForm').style.display = 'none';
+}
 async function submitForm() {
   const name = document.getElementById('f-name').value.trim();
   const email = document.getElementById('f-email').value.trim();
   const service = document.getElementById('f-service').value;
   const msg = document.getElementById('f-msg').value.trim();
   if (!name || !email || !msg) { alert('Please fill in your name, email, and message.'); return; }
-  const btn = document.querySelector('.form-submit');
+  const btn = document.getElementById('submitBtn');
   btn.textContent = 'Sending...';
   btn.disabled = true;
   try {
-    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    const res = await fetch('https://formspree.io/f/xyknrzyq', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
@@ -750,11 +747,9 @@ async function submitForm() {
       })
     });
     if (res.ok) {
-      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formFields').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
-    } else {
-      throw new Error('submission failed');
-    }
+    } else { throw new Error(); }
   } catch(e) {
     btn.textContent = 'Send Message';
     btn.disabled = false;
@@ -762,6 +757,6 @@ async function submitForm() {
   }
 }
 </script>
- 
+
 <footer>
   <span class=
