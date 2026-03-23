@@ -656,17 +656,23 @@
     Whether you need a few hours of support per week or a dedicated operations partner, 
     I'd love to hear about your project.
   </p>
-
-  <!-- Collapsed state: just the button -->
-  <div id="contactCta">
-    <button class="contact-link primary" style="cursor:pointer;font-family:var(--sans);border:none;" onclick="showForm()">
+ 
+  <!-- Collapsed state: both buttons -->
+  <div id="contactCta" class="contact-links">
+    <a href="https://courses.ruzuku.com/meet/arleenbarreiros/discovery" class="contact-link primary" target="_blank">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+      </svg>
+      Book a Discovery Call
+    </a>
+    <button class="contact-link secondary" style="cursor:pointer;font-family:var(--sans);" onclick="showForm()">
       <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
       </svg>
       Get in Touch
     </button>
   </div>
-
+ 
   <!-- Expanded inline form -->
   <div id="contactForm" style="display:none; max-width:480px; margin:0 auto; text-align:left;">
     <div id="formFields">
@@ -708,12 +714,12 @@
       <p style="font-size:0.88rem;color:var(--warm-muted);line-height:1.7;">Thank you for reaching out. I'll be in touch within 1–2 business days.</p>
     </div>
   </div>
-
+ 
   <p class="contact-detail" style="margin-top:2.5rem;">
     Based in South Florida &nbsp;·&nbsp; Available for remote engagements worldwide
   </p>
 </section>
-
+ 
 <script>
 function showForm() {
   document.getElementById('contactCta').style.display = 'none';
@@ -757,6 +763,6 @@ async function submitForm() {
   }
 }
 </script>
-
+ 
 <footer>
   <span class=
